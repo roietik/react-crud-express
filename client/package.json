@@ -3,14 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "node-sass": "^4.13.1",
-    "normalize.scss": "^0.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "^3.4.0"
   },
   "scripts": {
-    "watch:sass": "node-sass -o public/css src/sass/main.scss -w",
+    "watch:sass": "node-sass public/css src/sass/main.scss -w",
     "start": "react-scripts start watch:sass",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -28,5 +26,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.1",
+    "normalize.scss": "^0.1.0"
   }
 }
