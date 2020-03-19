@@ -8,8 +8,8 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "watch:sass": "node-sass src/sass/main.scss src/App.css -w",
-    "start": "react-scripts start",
+    "watch:sass": "node-sass -o css css -w",
+    "start": "react-scripts start watch:sass",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

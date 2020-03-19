@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./customers.scss";
 
 class Customers extends Component {
   constructor() {
