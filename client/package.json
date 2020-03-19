@@ -10,7 +10,7 @@
     "react-scripts": "^3.4.0"
   },
   "scripts": {
-    "watch:sass": "node-sass -o public/css src/sass/styles.scss -w",
+    "watch:sass": "node-sass -o public/css src/sass/main.scss -w",
     "start": "react-scripts start watch:sass",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
