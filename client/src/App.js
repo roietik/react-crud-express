@@ -6,9 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <header className="app__header">
-          <img src={logo} className="app__header--logo" alt="logo" />
-          <h1 className="app__header--title">React Express Starter</h1>
+        <header className="app__header header">
+          <img src={logo} className="header__logo" alt="logo" />
+          <h1 className="header__title">React Express Starter</h1>
         </header>
         <Customers />
       </div>
