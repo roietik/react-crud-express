@@ -1,12 +1,17 @@
-FROM node:9-alpine
-ENV NODE_ENV production
-RUN mkdir /app
-WORKDIR /app
-COPY package-lock.json /app
-COPY package.json /app
-RUN npm install
-COPY . /app
-RUN npm run client-install
-EXPOSE 3000
-CMD ["npm", "run dev"]
+FROM node:10
 
+RUN mkdir -p /usr/app
+
+WORKDIR /usr/app
+
+COPY package.json /usr/app
+
+RUN npm rebuild bcrypt
+
+RUN npm install
+
+COPY . /usr/app
+
+EXPOSE 3100
+
+CMD ["npm", "start"]

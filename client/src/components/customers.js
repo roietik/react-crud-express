@@ -9,7 +9,7 @@ class Customers extends Component {
   }
 
   componentDidMount() {
-    fetch("/api/customers")
+    fetch("http://localhost:3100/api/customers")
       .then(res => res.json())
       .then(customers =>
         this.setState({ customers }, () =>
