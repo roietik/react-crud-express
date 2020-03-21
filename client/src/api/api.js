@@ -2,7 +2,7 @@ import axios from "axios";
 
 window.axios = axios;
 
-const BASE_URL = "http://localhost:3100/api/customers";
+const BASE_URL = "http://localhost:3100/api/todos";
 
 const AxiosApi = {
   getAll: async function() {

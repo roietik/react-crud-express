@@ -8,22 +8,27 @@ app.use(bodyParser.json());
 
 const todos = [
   {
-    todo: "Jack",
+    todo: "Water the flowers",
     done: false,
     id: 0
   },
   {
-    todo: "Radek",
+    todo: "Empty the dishwasher",
     done: false,
     id: 1
   },
   {
-    todo: "Piotr",
+    todo: "Wash the car",
     done: false,
     id: 2
   },
   {
-    todo: "Radek",
+    todo: "Learn the GraphQL",
+    done: false,
+    id: 3
+  },
+  {
+    todo: "Practice the GSAP",
     done: false,
     id: 3
   }
