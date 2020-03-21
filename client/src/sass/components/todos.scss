@@ -1,0 +1,72 @@
+.todo {
+  margin: auto;
+  width: 50%;
+  &__title {
+    text-align: left;
+  }
+  &__form,
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 100px;
+    column-gap: 10px;
+    background-color: #dfe6e6;
+    border-radius: 5px;
+    padding: 10px;
+    &__field {
+      width: 100%;
+      padding: 12px 20px;
+      margin: block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      &:focus,
+      &:hover {
+        outline: none;
+        border: 1px solid #00b894;
+        border-radius: 5px;
+      }
+    }
+    &__submit {
+      width: 100%;
+      background-color: #00b894;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      &:focus,
+      &:hover {
+        outline: none;
+        background: #222;
+      }
+    }
+  }
+  &__list,
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 85px 60px;
+    list-style: none;
+    padding: 0 10px;
+
+    &__data {
+      margin: 0;
+      justify-self: left;
+    }
+    &__button {
+      justify-self: right;
+      display: inline-block;
+      height: auto;
+      width: auto;
+      border-radius: 7px;
+      border: 1px solid #00b894;
+      background: #dfe6e694;
+      margin: 3px 0;
+      &:focus,
+      &:hover {
+        outline: none;
+        border: 1px solid #222;
+        border-radius: 7px;
+      }
+    }
+  }
+}

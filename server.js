@@ -6,72 +6,68 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const customers = [
+const todos = [
   {
-    firstname: "Jack",
-    lastname: "Davis",
-    age: 25,
+    todo: "Jack",
+    done: false,
     id: 0
   },
   {
-    firstname: "Mary",
-    lastname: "Taylor",
-    age: 37,
+    todo: "Radek",
+    done: false,
     id: 1
   },
   {
-    firstname: "Patrycja",
-    lastname: "Thomas",
-    age: 17,
+    todo: "Piotr",
+    done: false,
     id: 2
   },
   {
-    firstname: "Peter",
-    lastname: "Thomas",
-    age: 17,
+    todo: "Radek",
+    done: false,
     id: 3
   }
 ];
 
 //getAll
-const getAll = (req, res) => res.json(customers);
-app.get("/api/customers", getAll);
+const getAll = (req, res) => res.json(todos);
+app.get("/api/todos", getAll);
 
 //getOne
 const getOne = (req, res) => {
-  const customer = customers[req.params.id];
-  res.json(customer);
+  const todo = todo[req.params.id];
+  res.json(todo);
 };
-app.get("/api/customers/:id", getOne);
+app.get("/api/todos/:id", getOne);
 
 //post
 const create = (req, res) => {
-  let newCustomer = req.body;
-  customers[newCustomer.id] = newCustomer;
-  res.json(newCustomer);
+  let newTodo = req.body;
+  todos[newTodo.id] = newTodo;
+  res.json(newTodo);
 };
-app.post("/api/customers", create);
+app.post("/api/todos", create);
 
 //put
 const update = (req, res) => {
   const id = parseInt(req.params.id);
-  let updatedCustomer = req.body;
-  if (customers[id] != null) {
-    customers[id] = updatedCustomer;
-    res.json(updatedCustomer);
+  let updatedTodo = req.body;
+  if (todos[id] != null) {
+    todos[id] = updatedTodo;
+    res.json(updatedTodo);
   } else {
-    res.json(updatedCustomer);
+    res.json(updatedTodo);
   }
 };
-app.put("/api/customers/:id", update);
+app.put("/api/todos/:id", update);
 
 //del
 const remove = (req, res) => {
-  const deleteCustomer = customers[req.params.id];
-  delete customers[req.params.id];
-  res.json(deleteCustomer);
+  const deleteTodo = todos[req.params.id];
+  delete todos[req.params.id];
+  res.json(deleteTodo);
 };
-app.delete("/api/customers/:id", remove);
+app.delete("/api/todos/:id", remove);
 
 const port = 3100;
 const srv = app.listen(port, () => {

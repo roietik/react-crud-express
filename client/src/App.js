@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import Customers from "./components/customers";
+import Todos from "./components/todos";
 
 class App extends Component {
   render() {
@@ -8,9 +8,9 @@ class App extends Component {
       <div className="app">
         <header className="app__header header">
           <img src={logo} className="header__logo" alt="logo" />
-          <h1 className="header__title">React Express Starter</h1>
+          <h1 className="header__title">React Express Todo</h1>
         </header>
-        <Customers />
+        <Todos />
       </div>
     );
   }
