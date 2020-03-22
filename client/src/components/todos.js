@@ -9,7 +9,7 @@ class Todos extends Component {
   }
 
   componentDidMount() {
-    this.refs.name.focus();
+    this.refs.todo.focus();
 
     fetch("http://localhost:3100/api/todos")
       .then(res => res.json())
@@ -39,14 +39,8 @@ class Todos extends Component {
         <form ref="form" className="todo__form form">
           <input
             type="text"
-            ref="name"
-            placeholder="firstname"
-            className="form__field"
-          />
-          <input
-            type="text"
-            ref="address"
-            placeholder="lastname"
+            ref="todo"
+            placeholder="todo"
             className="form__field"
           />
           <button onClick={e => this.submit(e)} className="form__submit">

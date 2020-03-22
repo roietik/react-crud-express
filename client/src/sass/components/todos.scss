@@ -1,3 +1,13 @@
+$green: #00b894;
+$black: #222;
+$white: white;
+$gray: #ccc;
+$form-bg-color: #dfe6e6;
+$btn-color: #dfe6e694;
+$gap: 10px;
+$radius: 5px;
+$padding: 14px 20px;
+
 .todo {
   margin: auto;
   width: 50%;
@@ -7,37 +17,36 @@
   &__form,
   .form {
     display: grid;
-    grid-template-columns: 1fr 1fr 100px;
-    column-gap: 10px;
-    background-color: #dfe6e6;
-    border-radius: 5px;
-    padding: 10px;
+    grid-template-columns: 1fr 100px;
+    column-gap: $gap;
+    background-color: $form-bg-color;
+    border-radius: $radius;
+    padding: $gap;
     &__field {
       width: 100%;
-      padding: 12px 20px;
+      padding: $padding;
       margin: block;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
+      border: 1px solid $gray;
+      border-radius: $radius;
       &:focus,
       &:hover {
         outline: none;
-        border: 1px solid #00b894;
-        border-radius: 5px;
+        border: 1px solid $green;
+        border-radius: $radius;
       }
     }
     &__submit {
       width: 100%;
-      background-color: #00b894;
-      color: white;
-      padding: 14px 20px;
+      background-color: $green;
+      color: $white;
+      padding: $padding;
       border: none;
-      border-radius: 5px;
+      border-radius: $radius;
       cursor: pointer;
       &:focus,
       &:hover {
         outline: none;
-        background: #222;
+        background: $black;
       }
     }
   }
@@ -46,7 +55,7 @@
     display: grid;
     grid-template-columns: 1fr 85px 60px;
     list-style: none;
-    padding: 0 10px;
+    padding: 0 $gap;
 
     &__data {
       margin: 0;
@@ -57,15 +66,15 @@
       display: inline-block;
       height: auto;
       width: auto;
-      border-radius: 7px;
-      border: 1px solid #00b894;
-      background: #dfe6e694;
+      border-radius: $radius;
+      border: 1px solid $green;
+      background: $btn-color;
       margin: 3px 0;
       &:focus,
       &:hover {
         outline: none;
-        border: 1px solid #222;
-        border-radius: 7px;
+        border: 1px solid $black;
+        border-radius: $radius;
       }
     }
   }
