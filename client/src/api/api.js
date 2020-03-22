@@ -2,28 +2,29 @@ import axios from "axios";
 
 window.axios = axios;
 
-const BASE_URL = "http://localhost:3100/api/todos";
+const BASE_URL = "http://localhost:3100/api";
 
-const AxiosApi = {
+const Api = {
   getAll: async function() {
-    const response = await axios.get(`${BASE_URL}/employees`);
+    const response = await axios.get(`${BASE_URL}/todos`);
     const all = response.data;
-    return all.data;
+    return all;
   },
   getOne: async function(id) {
-    if (!item) {
+    if (!id) {
       throw new Error("TODO element has to have an id to be displayed");
     }
-    const response = await axios.get(`${BASE_URL}/employee/${id}`);
+    const response = await axios.get(`${BASE_URL}/todos/${id}`);
     const single = response.data;
     console.log(single);
     return single.data;
   },
   add: async function(item) {
+    console.log("add", item);
     if (!item) {
       throw new Error("Added TODO is required");
     }
-    const response = await axios.post(`${BASE_URL}/create`, item);
+    const response = await axios.post(`${BASE_URL}/todos`, item);
     const addedItem = response.data;
     return addedItem;
   },
@@ -31,19 +32,20 @@ const AxiosApi = {
     if (!indexToUpdate) {
       throw new Error("Replaced TODO has to have an id to be updated");
     }
-    const response = await axios.put(
-      `${BASE_URL}/update/${indexToUpdate + 1}`,
-      { ...itemToUpdate, id: indexToUpdate }
-    );
+    const response = await axios.put(`${BASE_URL}/todos/${indexToUpdate}`, {
+      ...itemToUpdate,
+      id: indexToUpdate
+    });
     const replacedItem = response.data;
     return replacedItem;
   },
-  remove: async function(itemToRemove) {
+  del: async function(itemToRemove) {
+    console.log("api del", itemToRemove, itemToRemove.id);
     if (!itemToRemove.id) {
       throw new Error("Removed TODO has to have an id to be updated");
     }
-    await axios.delete(`${BASE_URL}/delete/${itemToRemove.id}`);
+    await axios.delete(`${BASE_URL}/todos/${itemToRemove.id}`);
   }
 };
 
-export default AxiosApi;
+export default Api;

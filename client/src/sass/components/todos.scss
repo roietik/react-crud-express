@@ -7,7 +7,6 @@ $btn-color: #dfe6e694;
 $gap: 10px;
 $radius: 5px;
 $padding: 14px 20px;
-
 .todo {
   margin: auto;
   width: 50%;
@@ -23,7 +22,6 @@ $padding: 14px 20px;
     border-radius: $radius;
     padding: $gap;
     &__field {
-      width: 100%;
       padding: $padding;
       margin: block;
       border: 1px solid $gray;

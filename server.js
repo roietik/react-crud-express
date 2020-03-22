@@ -30,7 +30,7 @@ const todos = [
   {
     todo: "Practice the GSAP",
     done: false,
-    id: 3
+    id: 4
   }
 ];
 
@@ -51,7 +51,7 @@ const create = (req, res) => {
   todos[newTodo.id] = newTodo;
   res.json(newTodo);
 };
-app.post("/api/todos", create);
+app.post("/api/todos/", create);
 
 //put
 const update = (req, res) => {
@@ -68,7 +68,8 @@ app.put("/api/todos/:id", update);
 
 //del
 const remove = (req, res) => {
-  const deleteTodo = todos[req.params.id];
+  console.log(req, res);
+  let deleteTodo = todos[req.params.id];
   delete todos[req.params.id];
   res.json(deleteTodo);
 };
