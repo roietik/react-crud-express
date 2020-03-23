@@ -4,9 +4,10 @@ RUN mkdir -p /usr/app
 
 WORKDIR /usr/app
 
+COPY package-lock.json ./
 COPY package.json ./
 
-RUN npm install
+RUN npm ci
 
 EXPOSE 3000
 
