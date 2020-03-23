@@ -2,49 +2,34 @@ import axios from "axios";
 
 window.axios = axios;
 
-const BASE_URL = "http://localhost:3100/api";
+const BASE_URL = "http://localhost:3100/api/todos";
 
 const Api = {
   getAll: async function() {
-    const response = await axios.get(`${BASE_URL}/todos`);
+    const response = await axios.get(`${BASE_URL}`);
     const all = response.data;
     return all;
   },
   getOne: async function(id) {
-    if (!id) {
-      throw new Error("TODO element has to have an id to be displayed");
-    }
-    const response = await axios.get(`${BASE_URL}/todos/${id}`);
-    const single = response.data;
-    console.log(single);
-    return single.data;
+    const response = await axios.get(`${BASE_URL}/${id}`);
+    const one = response.data;
+    return one.data;
   },
   add: async function(item) {
-    console.log("add", item);
-    if (!item) {
-      throw new Error("Added TODO is required");
-    }
-    const response = await axios.post(`${BASE_URL}/todos`, item);
-    const addedItem = response.data;
-    return addedItem;
+    const response = await axios.post(`${BASE_URL}`, item);
+    const added = response.data;
+    return added;
   },
   replace: async function(indexToUpdate, itemToUpdate) {
-    if (!indexToUpdate) {
-      throw new Error("Replaced TODO has to have an id to be updated");
-    }
-    const response = await axios.put(`${BASE_URL}/todos/${indexToUpdate}`, {
+    const response = await axios.put(`${BASE_URL}/${indexToUpdate}`, {
       ...itemToUpdate,
       id: indexToUpdate
     });
-    const replacedItem = response.data;
-    return replacedItem;
+    const replaced = response.data;
+    return replaced;
   },
-  del: async function(itemToRemove) {
-    console.log("api del", itemToRemove, itemToRemove.id);
-    if (!itemToRemove.id) {
-      throw new Error("Removed TODO has to have an id to be updated");
-    }
-    await axios.delete(`${BASE_URL}/todos/${itemToRemove.id}`);
+  del: async function(indexToRemove) {
+    await axios.delete(`${BASE_URL}/${indexToRemove}`);
   }
 };
 

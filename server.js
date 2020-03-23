@@ -68,9 +68,9 @@ app.put("/api/todos/:id", update);
 
 //del
 const remove = (req, res) => {
-  console.log(req, res);
   let deleteTodo = todos[req.params.id];
   delete todos[req.params.id];
+  todos.splice(req.params.id, 1);
   res.json(deleteTodo);
 };
 app.delete("/api/todos/:id", remove);

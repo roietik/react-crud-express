@@ -8,7 +8,8 @@ class Todos extends Component {
       todos: [],
       loading: true,
       act: 0,
-      index: null,
+      next: "",
+      edit: "",
       error: ""
     };
   }
@@ -19,23 +20,23 @@ class Todos extends Component {
 
     Api.getAll()
       .then(todos => this.setState({ todos }))
-      .then(() => this.setState({ index: this.state.todos.length }))
+      .then(() => this.setState({ next: this.state.todos.length }))
       .catch(error => this.setState({ error }))
       .finally(() => this.setState({ loading: false }));
   }
 
   //api
   add = item => {
-    Api.add({ ...item, id: this.state.index }).then(addedItem => {
+    Api.add({ ...item, id: this.state.next }).then(addedItem => {
       this.setState(prevState => {
         const todos = [...prevState.todos, addedItem];
-        return { todos, index: ++prevState.index };
+        return { todos, next: ++prevState.next };
       });
     });
   };
 
   del = indexToRemove => {
-    Api.del(this.state.todos[indexToRemove]).then(() =>
+    Api.del(indexToRemove).then(() =>
       this.setState(prevState => {
         const todos = prevState.todos.filter(
           (_, index) => index !== indexToRemove
@@ -46,6 +47,7 @@ class Todos extends Component {
   };
 
   update = (indexToUpdate, itemToUpdate) => {
+    console.log(itemToUpdate);
     Api.replace(itemToUpdate.id, itemToUpdate).then(updatedItem => {
       this.setState(prevState => {
         const todos = prevState.todos.map((item, index) =>
@@ -63,22 +65,35 @@ class Todos extends Component {
     if (this.state.act === 0) {
       this.add({ todo: this.refs.todo.value, done: false });
     } else {
-      // update
-      // let index = this.state.index;
-      // todos[index].todo = todo;
-      // todos[index].done = false;
+      this.update(this.state.edit, {
+        todo: this.refs.todo.value,
+        done: false,
+        id: this.state.edit
+      });
     }
+
+    this.setState({
+      act: 0
+    });
+
     this.refs.form.reset();
     this.refs.todo.focus();
   };
 
   remove = indexToRemove => {
-    console.log(indexToRemove);
     this.del(indexToRemove);
   };
 
-  edit = (indexToUpdate, itemToUpdate) => {
-    this.update(indexToUpdate, itemToUpdate);
+  edit = i => {
+    let data = this.state.todos[i];
+    this.refs.todo.value = data.todo;
+
+    this.setState({
+      act: 1,
+      edit: i
+    });
+
+    this.refs.todo.focus();
   };
 
   render() {
@@ -106,16 +121,7 @@ class Todos extends Component {
               <button onClick={() => this.remove(idx)} className="list__button">
                 Remove
               </button>
-              <button
-                onClick={() =>
-                  this.edit(5, {
-                    todo: "New todo item hue hue hue",
-                    done: false,
-                    id: 5
-                  })
-                }
-                className="list__button"
-              >
+              <button onClick={() => this.edit(idx)} className="list__button">
                 Edit
               </button>
             </li>
